@@ -7,8 +7,10 @@ std::string GetGuess();
 int main() 
 {
 	PrintIntro();
-	constexpr int MAX_TRIES = 5;
-	for (int count = 1; count <= MAX_TRIES; ++count)
+
+	//Loop for the number of turns asking for guess
+	constexpr int NUMBER_OF_TURNS = 5;
+	for (int count = 1; count <= NUMBER_OF_TURNS; ++count)
 	{
 		std::cout << "Your guess was: " << GetGuess() << std::endl;
 		std::cout << std::endl;
