@@ -4,12 +4,16 @@
 void PrintIntro();
 std::string GetGuess();
 void PlayGame();
+bool AskToPlayAgain();
 
 
 int main() 
 {
-	PrintIntro();
-	PlayGame();
+	do
+	{
+		PrintIntro();
+		PlayGame();
+	} while (AskToPlayAgain() == true);
 	return 0;
 }
 
@@ -37,6 +41,7 @@ std::string GetGuess()
 	return Guess;
 }
 
+
 //Introduce the game
 void PrintIntro()
 {
@@ -45,4 +50,14 @@ void PrintIntro()
 	std::cout << "Can you guess the " << WORD_LEGHT;
 	std::cout << " letter isogram I'm thinking of?\n\n";
 	return;
+}
+
+
+bool AskToPlayAgain()
+{
+	std::cout << "Do you wish to play again?";
+	std::string Response = "";
+	std::getline(std::cin, Response);
+
+	return (Response[0] == 'y') || (Response[0] == 'Y');
 }
