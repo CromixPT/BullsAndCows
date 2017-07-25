@@ -9,11 +9,13 @@ bool AskToPlayAgain();
 
 int main() 
 {
+	bool bPlayAgain = false;
 	do
 	{
 		PrintIntro();
 		PlayGame();
-	} while (AskToPlayAgain() == true);
+		bPlayAgain = AskToPlayAgain();
+	} while (bPlayAgain);
 	return 0;
 }
 
@@ -55,7 +57,7 @@ void PrintIntro()
 
 bool AskToPlayAgain()
 {
-	std::cout << "Do you wish to play again?";
+	std::cout << "Do you wish to play again (y/n)? ";
 	std::string Response = "";
 	std::getline(std::cin, Response);
 
