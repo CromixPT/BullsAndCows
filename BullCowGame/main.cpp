@@ -3,19 +3,27 @@
 
 void PrintIntro();
 std::string GetGuess();
+void PlayGame();
+
 
 int main() 
 {
 	PrintIntro();
+	PlayGame();
+	return 0;
+}
 
+
+void PlayGame()
+{
 	//Loop for the number of turns asking for guess
 	constexpr int NUMBER_OF_TURNS = 5;
 	for (int count = 1; count <= NUMBER_OF_TURNS; ++count)
 	{
-		std::cout << "Your guess was: " << GetGuess() << std::endl;
+		std::string Guess = GetGuess();
+		std::cout << "Your guess was: " << Guess << std::endl;
 		std::cout << std::endl;
 	}
-	return 0;
 }
 
 
@@ -25,7 +33,7 @@ std::string GetGuess()
 	std::string Guess = "";
 	std::cout << "Input your guess: ";
 	std::getline(std::cin, Guess);
-	std::cin.sync();
+	//std::cin.sync();
 	return Guess;
 }
 
