@@ -1,7 +1,9 @@
 #include "FBullCowGame.h"
 
-int FBullCowGame::GetMaxTries() const { return this->MyMaxTries; }
-int FBullCowGame::GetCurrentTry() const { return this->MyCurrentTry; }
+using int32 = int;
+
+int32 FBullCowGame::GetMaxTries() const { return this->MyMaxTries; }
+int32 FBullCowGame::GetCurrentTry() const { return this->MyCurrentTry; }
 
 
 // Constructor
@@ -16,14 +18,14 @@ FBullCowGame::~FBullCowGame()
 
 void FBullCowGame::Reset()
 {
-	constexpr int MAX_TRIES = 8;
+	constexpr int32 MAX_TRIES = 8;
 	this->MyCurrentTry = 1;
 	this->MyMaxTries = MAX_TRIES;
 	return;
 }
 
 
-bool FBullCowGame::CheckGuessValidity(std::string) const
+bool FBullCowGame::CheckGuessValidity(FString) const
 {
 	return false;
 }
