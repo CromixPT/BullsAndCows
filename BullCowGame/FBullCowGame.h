@@ -6,10 +6,10 @@
 class FBullCowGame {
 public:
 	void Reset();
-	int GetMaxTries();
-	int GetCurrentTry();
-	bool CheckGuessValidity(std::string);
-	bool IsGameWon();
+	int GetMaxTries() const;
+	int GetCurrentTry() const;
+	bool CheckGuessValidity(std::string) const;
+	bool IsGameWon() const;
 
 private:
 	int MyCurrentTry = 1;
