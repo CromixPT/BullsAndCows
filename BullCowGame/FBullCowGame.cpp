@@ -8,12 +8,12 @@ void FBullCowGame::Reset()
 
 int FBullCowGame::GetMaxTries()
 {
-	return 0;
+	return this->MyMaxTries;
 }
 
 int FBullCowGame::GetCurrentTry()
 {
-	return 0;
+	return this->MyCurrentTry;
 }
 
 
