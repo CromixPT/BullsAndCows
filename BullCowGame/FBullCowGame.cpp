@@ -31,7 +31,7 @@ void FBullCowGame::Reset()
 }
 
 
-bool FBullCowGame::CheckGuessValidity(FString) const
+EWordStatus FBullCowGame::CheckGuessValidity(FString) const
 {
 	return false;
 }
