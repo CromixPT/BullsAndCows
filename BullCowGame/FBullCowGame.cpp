@@ -33,7 +33,7 @@ void FBullCowGame::Reset()
 
 EWordStatus FBullCowGame::CheckGuessValidity(FString) const
 {
-	return false;
+	return EWordStatus::OK; //TODO make actual error
 }
 
 

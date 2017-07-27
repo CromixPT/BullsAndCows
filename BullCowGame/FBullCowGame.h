@@ -15,7 +15,8 @@ enum class EWordStatus
 {
 	OK,
 	Not_Isogram,
-	Invalid_Length
+	Invalid_Lenght,
+	Not_LowerCase,
 };
 
 class FBullCowGame 
