@@ -25,7 +25,7 @@ int main()
 void PlayGame()
 {
 	//Create instace of FBullCowGame
-
+	BCGame.Reset();
 	int MaxTries = BCGame.GetMaxTries();
 	std::cout << "Maximum tries: " << MaxTries << std::endl;
 	//Loop for the number of turns asking for guess
