@@ -43,8 +43,9 @@ void PlayGame()
 	//TODO change from for to while
 	for (int32 count = 1; count <= MaxTries; ++count)
 	{
-		FText Guess = GetGuess();  // TODO check for valid guesses
+		FText Guess = GetGuess();  
 
+		EGuessStatus Status = BCGame.CheckGuessValidity(Guess);
 		//submit valid guess to game
 		FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
 		//print number of bulls and cows
@@ -61,7 +62,7 @@ void PlayGame()
 
 
 //Get guess from user
-FText GetGuess()
+FText GetGuess() //TODO Change to GetValidGuess
 {
 	int32 CurrentTry = BCGame.GetCurrentTry();
 	FText Guess = "";
