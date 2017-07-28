@@ -34,7 +34,7 @@ public:
 	//FString GetHiddenWord() const;
 
 	//counts bulls and cows and increasing try number, assumes a valid guess
-	FBullCowCount SubmitGuess(FString);
+	FBullCowCount SubmitValidGuess(FString);
 
 
 private:
