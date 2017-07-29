@@ -31,6 +31,7 @@ public:
 	int32 GetHiddenWordLength() const;
 	EGuessStatus CheckGuessValidity(FString) const;//TODO make a more rich return
 	bool IsGameWon() const;
+	
 	//FString GetHiddenWord() const;
 
 	//counts bulls and cows and increasing try number, assumes a valid guess
@@ -42,5 +43,6 @@ private:
 	int32 MyMaxTries;
 	FString MyHiddenWord;
 	bool bGameIsWon;
+	bool IsIsogram(FString) const;
 
 };
