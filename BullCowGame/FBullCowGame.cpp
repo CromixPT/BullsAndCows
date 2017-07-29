@@ -5,6 +5,7 @@ using int32 = int;
 int32 FBullCowGame::GetMaxTries() const { return this->MyMaxTries; }
 int32 FBullCowGame::GetCurrentTry() const { return this->MyCurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); }
+bool FBullCowGame::IsGameWon() const  {	return this->bGameIsWon; }
 
 
 // Constructor
@@ -20,12 +21,13 @@ FBullCowGame::~FBullCowGame()
 void FBullCowGame::Reset()
 {
 	constexpr int32 MAX_TRIES = 8;
-	const FString HIDDEN_WORD = "ant";
+	const FString HIDDEN_WORD = "planet";
 
 
 	this->MyCurrentTry = 1;
 	this->MyMaxTries = MAX_TRIES;
 	this->MyHiddenWord = HIDDEN_WORD;
+	this->bGameIsWon = false;
 
 	return;
 }
@@ -36,12 +38,12 @@ EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 	//if the guess isn't an isogram 
 	if (false)
 	{
-		return EGuessStatus::Not_Isogram;
+		return EGuessStatus::Not_Isogram; //TODO make isogram check method
 	}
 	//if the guess isn't all lower case
-	else if (false)
+	else if (false) 
 	{
-		return EGuessStatus::Not_LowerCase;
+		return EGuessStatus::Not_LowerCase; //TODO make lower case check method
 	}
 	//if the guess leght is wrong
 	else if (GetHiddenWordLength() != Guess.length())
@@ -53,12 +55,6 @@ EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 	{
 		return EGuessStatus::OK;
 	}
-}
-
-
-bool FBullCowGame::IsGameWon() const
-{
-	return false;
 }
 
 
@@ -90,6 +86,14 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 				}
 			}
 		}
+	}
+	if (BullCowCount.Bulls == WordLength)
+	{
+		this->bGameIsWon = true;
+	}
+	else
+	{
+		this->bGameIsWon = false;
 	}
 	return BullCowCount;
 }
