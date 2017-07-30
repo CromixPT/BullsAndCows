@@ -44,5 +44,6 @@ private:
 	FString MyHiddenWord;
 	bool bGameIsWon;
 	bool IsIsogram(FString Word ) const;
+	bool IsLowerCase(FString Word) const;
 
 };

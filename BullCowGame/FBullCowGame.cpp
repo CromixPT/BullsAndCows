@@ -47,7 +47,7 @@ EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 		return EGuessStatus::Not_Isogram; //TODO make isogram check method
 	}
 	//if the guess isn't all lower case
-	else if (false) 
+	else if (!IsLowerCase(Guess)) 
 	{
 		return EGuessStatus::Not_LowerCase; //TODO make lower case check method
 	}
@@ -120,6 +120,19 @@ bool FBullCowGame::IsIsogram(FString Word) const
 			return false; 		//we do not have an isogram
 		else
 			LetterSeen[Letter] = true;		//otherwise add to the map
+	}
+	return true;
+}
+
+bool FBullCowGame::IsLowerCase(FString Word) const
+{
+	if (Word.length() <= 1) { return true; }
+	for (auto Letter : Word)
+	{
+		if (!islower(Letter))
+		{
+			return false;
+		}
 	}
 	return true;
 }
