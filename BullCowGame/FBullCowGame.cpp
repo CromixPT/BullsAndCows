@@ -6,33 +6,44 @@
 
 using int32 = int;
 
-int32 FBullCowGame::GetMaxTries() const { return this->MyMaxTries; }
+
 int32 FBullCowGame::GetCurrentTry() const { return this->MyCurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); }
 bool FBullCowGame::IsGameWon() const  {	return this->bGameIsWon; }
 
 
 
+FString FBullCowGame::SetHiddenWord(int32 &Length)
+{
+	TMap<int32, FString> HiddenWord{ {3,"gas"},{4,"fork"},{5,"table"},{6,"planet"},{7,"bailout"} };
+	return HiddenWord[Length];
+}
+
+
 
 // Constructor
 FBullCowGame::FBullCowGame()
 {
-	this->Reset();
+//	this->Reset();
 }
+
+
+int32 FBullCowGame::GetMaxTries() const 
+{ 
+	TMap<int32, int32> MaxTriesRelation{ {3,6},{4,8},{5,10},{6,12} , {7,14} };
+	return MaxTriesRelation[MyHiddenWord.length()];
+}
+
 
 FBullCowGame::~FBullCowGame()
 {
 }
 
-void FBullCowGame::Reset()
+void FBullCowGame::Reset(int32 &Length)
 {
-	constexpr int32 MAX_TRIES = 8;
-	const FString HIDDEN_WORD = "planet";
-
 
 	this->MyCurrentTry = 1;
-	this->MyMaxTries = MAX_TRIES;
-	this->MyHiddenWord = HIDDEN_WORD;
+	this->MyHiddenWord = SetHiddenWord(Length);
 	this->bGameIsWon = false;
 
 	return;

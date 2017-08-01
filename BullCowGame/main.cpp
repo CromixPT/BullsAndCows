@@ -11,51 +11,56 @@ user interaction. For game logic see the FBullCowGame class.
 using FText = std::string;
 using int32 = int;
 
-void PrintIntro();
-FText GetValidGuess();
-void PlayGame();
+void PrintIntro(FBullCowGame &BCGame);
+FText GetValidGuess(FBullCowGame &BCGame);
+void PlayGame(FBullCowGame &BCGame);
 bool AskToPlayAgain();
-void PrintGameSummary();
+void PrintGameSummary(FBullCowGame &BCGame);
+int32 GetGameDificulty(FBullCowGame &BCGame);
 
-FBullCowGame BCGame;
+
+
+
 
 int main() 
 {
+	//Create instace of FBullCowGame
 
-	
+	FBullCowGame BCGame;
 	bool bPlayAgain = false;
 	do
 	{
-		PrintIntro();
-		PlayGame();
+		PrintIntro(BCGame);
+		PlayGame(BCGame);
 		bPlayAgain = AskToPlayAgain();
 	} while (bPlayAgain);
 	return 0;
 }
 
 
-void PlayGame()
+void PlayGame(FBullCowGame &BCGame)
 {
-	//Create instace of FBullCowGame
-	BCGame.Reset();
+	int32 length = GetGameDificulty(BCGame);
+
+	BCGame.Reset(length);
 	int32 MaxTries = BCGame.GetMaxTries();
 	//Loop asking for guess while the game is not Won 
 	//and there are tries left
 	while (!BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries)
 	{
-		FText Guess = GetValidGuess();  
+		FText Guess = GetValidGuess(BCGame);
 		//submit valid guess to game and receive counts
 		FBullCowCount BullCowCount = BCGame.SubmitValidGuess(Guess);
 		std::cout << "Bulls = " << BullCowCount.Bulls;
 		std::cout << ". Cows = " << BullCowCount.Cows << std::endl;
 		std::cout << std::endl;
 	}
-	PrintGameSummary();
+	PrintGameSummary(BCGame);
 }
 
 
 //Get guess from user
-FText GetValidGuess()
+FText GetValidGuess(FBullCowGame &BCGame)
 {
 	EGuessStatus Status = EGuessStatus::Invalid;
 	FText Guess = "";
@@ -89,16 +94,23 @@ FText GetValidGuess()
 
 
 //Introduce the game
-void PrintIntro()
+void PrintIntro(FBullCowGame &BCGame)
 {
 	std::cout << "Welcome to Bulls & Cows, a fun word game\n";
-	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
-	std::cout << " letter isogram in ";
-	std::cout << BCGame.GetMaxTries() << " tries!\n\n";
-	return;
+	std::cout << "  ,           ,\n";
+	std::cout << "   /             \\\n";
+	std::cout << "  ((__-^^-,-^^-__))\n";
+	std::cout << "   `-_---' `---_-'\n";
+	std::cout << "    <__|o` 'o|__>\n";
+	std::cout << "       \  `  /\n";
+	std::cout << "        ): :(\n";
+	std::cout << "        :o_o:\n";
+	std::cout << "       " "-" " \n";
+	std::cout << std::endl;
+
 }
 
-void PrintGameSummary()
+void PrintGameSummary(FBullCowGame &BCGame)
 {
 	if (BCGame.IsGameWon())
 	{
@@ -109,6 +121,19 @@ void PrintGameSummary()
 		std::cout << "You failed to guess the hidden word. Better luck next time!\n\n";
 	}
 
+}
+
+int32 GetGameDificulty(FBullCowGame &BCGame)
+{
+	int32 length = 0;
+	do
+	{
+		std::cout << "Please choose the size of the hidden word(from 1 to 7): ";
+		std::cin >> length;
+		if (length < 1 || length > 7)
+			std::cout << "Please choose a size between 1 and 7 \n";
+	} while (length < 1 || length >7);
+	return length;
 }
 
 

@@ -23,12 +23,13 @@ enum class EGuessStatus
 class FBullCowGame 
 {
 public:
-	FBullCowGame(); // Constructor
+	FBullCowGame(); //Construtor for hidden word size selection
 	~FBullCowGame(); // Destructor
-	void Reset(); //TODO make a more rich return
+	void Reset(int32&); //TODO make a more rich return
 	int32 GetMaxTries() const;
 	int32 GetCurrentTry() const;
 	int32 GetHiddenWordLength() const;
+	FString SetHiddenWord(int32&);
 	EGuessStatus CheckGuessValidity(FString) const;//TODO make a more rich return
 	bool IsGameWon() const;
 	
@@ -40,7 +41,6 @@ public:
 
 private:
 	int32 MyCurrentTry;
-	int32 MyMaxTries;
 	FString MyHiddenWord;
 	bool bGameIsWon;
 	bool IsIsogram(FString Word ) const;
