@@ -1,4 +1,4 @@
-# BullsAndCows
+# Bulls And Cows Game
 
 A C++ implementation of Bulls and Cows Game([Wikipedia](https://en.wikipedia.org/wiki/Bulls_and_Cows)) in its word version. 
 
